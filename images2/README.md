@@ -17,4 +17,4 @@ public class Homework2 {
         }
     }
 }
-![Alt homework1](1234.png)
+![Alt homework2](1234.png)
