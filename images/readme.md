@@ -46,4 +46,4 @@ public class Main {
     }
 }
 ```
-![Alt homework11](./images/123.png)
+![Alt homework1](./images/123.png)
