@@ -101,3 +101,34 @@ public class Hw {
 }
 
 ![homework](images/4.png)
+
+### homework8
+
+package homework;
+
+public class Score {
+    public static void main(String[] args) {
+        int student = 30;  
+        int subject = 4;   
+
+        int[][] score = new int[student][subject + 1];
+   
+        for (int i = 0; i < student; i++) {
+            int sum = 0;
+            for (int j = 0; j < subject; j++) {
+                score[i][j] = (int) (Math.random() * 101);  // 0~100
+                sum += score[i][j];
+            }
+            score[i][subject] = sum;
+        }
+
+        for (int i = 0; i < student; i++) {
+            System.out.print((i + 1) + "\t");
+            for (int j = 0; j < score[i].length; j++) {
+                System.out.print(score[i][j] + "\t");
+            }
+            System.out.println();
+        }
+    }
+}
+![homework](images/8.png)
