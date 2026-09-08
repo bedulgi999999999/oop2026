@@ -46,7 +46,7 @@ public class Main {
     }
 }
 ```
-![Alt homework1](123.png)
+![homework2](images/123.png)
 
 ### homework2
 
@@ -66,7 +66,7 @@ public class Homework2 {
         }
     }
 }
-![Alt homework2](1234.png)
+![homework2](images2/1234.png)
 
 ### homework3
 
@@ -85,8 +85,7 @@ public class Homework3 {
         }
     }
 }
-
-![Alt homework3](12.png)
+![homework3](images23/12.png)
 
 ### homework4
 
@@ -101,5 +100,4 @@ public class Hw {
     }
 }
 
-![Alt homework4](12345.png)
-
+![homework4](images4/12345.png)
