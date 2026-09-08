@@ -85,7 +85,7 @@ public class Homework3 {
         }
     }
 }
-![homework3](images23/12.png)
+![homework3](images3/12.png)
 
 ### homework4
 
