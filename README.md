@@ -102,6 +102,37 @@ public class Hw {
 
 ![homework](images/4.png)
 
+### homework5
+
+
+package homework;
+public class Pi {
+
+    public static void main(String[] args) {
+        double rootTwelve = Math.sqrt(12);
+        double pi;
+        double sum = 1.0;
+
+        for (int i = 0; i < 25; i++) {
+
+            double power = Math.pow(3, i + 1);
+
+            if (i % 2 == 0) {
+                sum = sum - 1.0 / ((3 + 2 * i) * power);
+            } else {
+                sum = sum + 1.0 / ((3 + 2 * i) * power);
+            }
+
+            pi = rootTwelve * sum;
+
+            System.out.printf("%.12f\n", pi);
+        }
+    }
+}
+
+![homework](images/5.png)
+
+
 ### homework8
 
 package homework;
