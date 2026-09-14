@@ -135,6 +135,75 @@ public class Pi {
 ![homework](images/5.png)
 
 
+### homework6
+
+package homework;
+
+public class Binomial {
+    public static void main(String[] args) {
+        int n = 7;                          
+        int[][] binomial = new int[n][];
+
+        for (int i = 0; i < n; i++) {
+            binomial[i] = new int[i + 1];  
+            binomial[i][0] = 1;
+            binomial[i][i] = 1;
+
+            for (int j = 1; j < i; j++) {
+                binomial[i][j] = binomial[i - 1][j - 1] + binomial[i - 1][j];
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j <= i; j++) {
+                System.out.print(binomial[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+![homework](images/6.png)
+
+
+### homework7
+
+package homework;
+
+public class SelectionSort {
+    public static void main(String[] args) {
+        int[] data = new int[20];
+
+        for (int i = 0; i < 20; i++)
+            data[i] = (int)(Math.random() * 100);
+
+        System.out.println("전");
+        for (int i = 0; i < 20; i++)
+            System.out.print(data[i] + " ");
+        System.out.println();
+
+  
+        for (int i = 0; i < 19; i++) {
+            int min = i;                        
+
+            for (int j = i + 1; j < 20; j++) {
+                if (data[j] < data[min])
+                    min = j;                  
+            }
+
+            int temp = data[i];              
+            data[i] = data[min];
+            data[min] = temp;
+        }
+
+        System.out.println("후");
+        for (int i = 0; i < 20; i++)
+            System.out.print(data[i] + " ");
+        System.out.println();
+    }
+}
+![homework](images/7.png)
+
 ### homework8
 
 package homework;
