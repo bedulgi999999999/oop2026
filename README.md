@@ -100,7 +100,7 @@ public class Hw {
     }
 }
 
-![homework](images/4.png)
+![homework](images/4-1.png)
 
 ### homework5
 
