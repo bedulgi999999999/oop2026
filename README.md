@@ -247,45 +247,58 @@ public class Score {
 
 package home;
 
-public class homework10 {
+public class test {
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-        int arrayCount   = Integer.parseInt(args[0]);
-        int maxValue     = Integer.parseInt(args[1]);
-        int binSize      = Integer.parseInt(args[2]);
-        int displayScale = Integer.parseInt(args[3]);
+		int array_count, max_value, bin_size, display_scale, hist_size;
+		if (args.length != 4)
+			return;
 
-        int[] data = new int[arrayCount];
-        for (int i = 0; i < arrayCount; i++) {
-            data[i] = (int) (Math.random() * maxValue);
-        }
+		array_count   = Integer.parseInt(args[0]);
+		max_value     = Integer.parseInt(args[1]);
+		bin_size      = Integer.parseInt(args[2]);
+		display_scale = Integer.parseInt(args[3]);
+		hist_size     = max_value / bin_size;
 
-        int binCount = (maxValue + binSize - 1) / binSize;
-        int[] freq = new int[binCount];
+		int[] arr = new int[array_count];
+		int[] hist = new int[hist_size];
 
-        for (int i = 0; i < arrayCount; i++) {
-            int idx = data[i] / binSize;
-            if (idx >= binCount) idx = binCount - 1;
-            freq[idx]++;
-        }
+		for (int i = 0; i < array_count; i++) {
+			arr[i] = (int) (Math.random() * max_value);
+		}
 
-        System.out.println(" 도수분포표 ");
-        for (int i = 0; i < binCount; i++) {
-            int lower = i * binSize;
-            int upper = Math.min(lower + binSize - 1, maxValue - 1);
+		for (int i = 0; i < array_count; i++) {
+			System.out.print(arr[i] + " ");
+		}
+		System.out.println();
 
-            System.out.printf("%3d~%3d : ", lower, upper);
+		for (int i = 0; i < array_count; i++) {
+			hist[arr[i] / bin_size]++;
+		}
 
-            int barLength = freq[i] / displayScale;
-            for (int j = 0; j < barLength; j++) {
-                System.out.print("#");
-            }
+		for (int i = 0; i < hist_size; i++) {
+			System.out.print(hist[i] + " ");
+		}
+		System.out.println();
 
-            System.out.println(" (" + freq[i] + ")");
-        }
-    }
+		System.out.println("도수분포표");
+		for (int i = 0; i < hist_size; i++) {
+			int lower = i * bin_size;
+			int upper = lower + bin_size - 1;
+
+			System.out.printf("%3d~%3d : ", lower, upper);
+
+			int barLength = hist[i] / display_scale;
+			for (int j = 0; j < barLength; j++) {
+				System.out.print("#");
+			}
+
+			System.out.println(" (" + hist[i] + ")");
+		}
+	}
 }
+
 
 ![homework](images/10.png)
 
