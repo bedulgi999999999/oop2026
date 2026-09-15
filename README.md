@@ -242,3 +242,120 @@ public class Score {
     }
 }
 ![homework](images/8.png)
+
+### homework10
+
+package home;
+
+public class homework10 {
+
+    public static void main(String[] args) {
+
+        int arrayCount   = Integer.parseInt(args[0]);
+        int maxValue     = Integer.parseInt(args[1]);
+        int binSize      = Integer.parseInt(args[2]);
+        int displayScale = Integer.parseInt(args[3]);
+
+        int[] data = new int[arrayCount];
+        for (int i = 0; i < arrayCount; i++) {
+            data[i] = (int) (Math.random() * maxValue);
+        }
+
+        int binCount = (maxValue + binSize - 1) / binSize;
+        int[] freq = new int[binCount];
+
+        for (int i = 0; i < arrayCount; i++) {
+            int idx = data[i] / binSize;
+            if (idx >= binCount) idx = binCount - 1;
+            freq[idx]++;
+        }
+
+        System.out.println(" 도수분포표 ");
+        for (int i = 0; i < binCount; i++) {
+            int lower = i * binSize;
+            int upper = Math.min(lower + binSize - 1, maxValue - 1);
+
+            System.out.printf("%3d~%3d : ", lower, upper);
+
+            int barLength = freq[i] / displayScale;
+            for (int j = 0; j < barLength; j++) {
+                System.out.print("#");
+            }
+
+            System.out.println(" (" + freq[i] + ")");
+        }
+    }
+}
+
+![homework](images/10.png)
+
+### homework11
+
+package home;
+
+public class homework11 {
+
+    public static void main(String[] args) {
+
+        int n = 100;
+        int[] data = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            data[i] = (int) (Math.random() * 100) + 1;
+        }
+
+        System.out.println("무작위");
+        for (int i = 0; i < n; i++) {
+            System.out.print(data[i] + " ");
+        }
+        System.out.println();
+
+        double sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += data[i];
+        }
+        double arithmeticMean = sum / n;
+
+        double logSum = 0;
+        for (int i = 0; i < n; i++) {
+            logSum += Math.log(data[i]);
+        }
+        double geometricMean = Math.exp(logSum / n);
+
+        double reciprocalSum = 0;
+        for (int i = 0; i < n; i++) {
+            reciprocalSum += 1.0 / data[i];
+        }
+        double harmonicMean = n / reciprocalSum;
+
+        int[] sorted = new int[n];
+        for (int i = 0; i < n; i++) {
+            sorted[i] = data[i];
+        }
+
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - 1 - i; j++) {
+                if (sorted[j] > sorted[j + 1]) {
+                    int temp = sorted[j];
+                    sorted[j] = sorted[j + 1];
+                    sorted[j + 1] = temp;
+                }
+            }
+        }
+
+        double median;
+        if (n % 2 == 0) {
+            median = (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0;
+        } else {
+            median = sorted[n / 2];
+        }
+
+        System.out.println(" 결과 ");
+        System.out.printf("산술평균 (arithmetic mean) = %.4f%n", arithmeticMean);
+        System.out.printf("기하평균 (geometric mean)  = %.4f%n", geometricMean);
+        System.out.printf("조화평균 (harmonic mean)   = %.4f%n", harmonicMean);
+        System.out.printf("중앙값   (median)          = %.4f%n", median);
+    }
+}
+
+![homework](images/11.png)
