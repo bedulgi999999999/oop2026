@@ -90,15 +90,24 @@ public class Homework3 {
 ### homework4
 
 public class homework4 {
+
     public static void main(String[] args) {
+    
         for (int i = 1; i <= 9; i++) {
+        
             for (int j = 1; j <= 9; j++) {
+            
                 System.out.printf("%d*%d=%-4d", j, i, j * i);
+                
             }
+            
             System.out.println();
         }
+        
     }
+    
 }
+
 ![homework](images/4-1.png)
 
 ### homework5
