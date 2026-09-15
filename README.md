@@ -329,11 +329,11 @@ public class homework11 {
         }
         double arithmeticMean = sum / n;
 
-        double logSum = 0;
+        double product = 1;
         for (int i = 0; i < n; i++) {
-            logSum += Math.log(data[i]);
+            product *= Math.pow(data[i], 1.0 / n);
         }
-        double geometricMean = Math.exp(logSum / n);
+        double geometricMean = product;
 
         double reciprocalSum = 0;
         for (int i = 0; i < n; i++) {
