@@ -372,3 +372,70 @@ public class homework11 {
 }
 
 ![homework](images/11.png)
+
+
+### homework13
+
+package homeworkk;
+
+import java.util.Scanner;
+
+public class miniCalculator {
+ 
+  static boolean isHigh(String op) {
+    return op.equals("#") || op.equals("/");
+  }
+
+  static double calc(double a, String op, double b) {
+    if (op.equals("+")) return a + b;
+    if (op.equals("-")) return a - b;
+    if (op.equals("*")) return a * b;
+    if (op.equals("/")) {
+      if (b == 0) throw new ArithmeticException("0으로 나눌 수 없습니다.");
+      return a / b;
+    }
+    throw new IllegalArgumentException("알 수 없는 연산자: " + op);
+  }
+
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);  
+    while (true) {
+      System.out.print("입력 (종료: q) > ");
+      if (!scanner.hasNextLine()) break;
+      String inputString = scanner.nextLine().trim();
+      if (inputString.equals("q")) break;
+
+      String[] arr = inputString.split(" ");
+      try {
+        double result;
+        if (arr.length == 3) {            
+          result = calc(Double.parseDouble(arr[0]), arr[1], Double.parseDouble(arr[2]));
+        } else if (arr.length == 5) {    
+          double a = Double.parseDouble(arr[0]);
+          double b = Double.parseDouble(arr[2]);
+          double c = Double.parseDouble(arr[4]);
+          String op1 = arr[1], op2 = arr[3];
+          if (isHigh(op2) && !isHigh(op1)) {
+            result = calc(a, op1, calc(b, op2, c));   
+          } else {
+            result = calc(calc(a, op1, b), op2, c);  
+          }
+        } else {
+          System.out.println("형식 오류: 피연산자는 2~3개, 공백으로 구분하세요. (예: 2 + 3)");
+          continue;
+        }
+
+        if (result == (long) result) System.out.println(inputString + " = " + (long) result);
+        else System.out.println(inputString + " = " + result);
+      } catch (NumberFormatException e) {
+        System.out.println("숫자 형식이 잘못되었습니다.");
+      } catch (RuntimeException e) {
+        System.out.println(e.getMessage());
+      }
+    }
+    scanner.close();
+  }
+}
+
+
+![homework](images/13.png)
