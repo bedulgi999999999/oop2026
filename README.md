@@ -439,3 +439,117 @@ public class miniCalculator {
 
 
 ![homework](images/13.png)
+
+
+### homework14
+
+package homeworkk;
+
+public class Numbers {
+	int num[];
+
+	Numbers(int num[]) {
+		this.num = num;
+	}
+
+	double getTotal() {
+		double sum = 0;
+		for (int i = 0; i < num.length; i++) sum += num[i];
+		return sum;
+	}
+
+	double getArithmeticMean() {
+		return getTotal() / num.length;
+	}
+
+	double getHarmonicMean() {
+		double sum = 0;
+		for (int i = 0; i < num.length; i++) {
+			if (num[i] == 0) return 0;
+			sum += 1.0 / num[i];
+		}
+		return num.length / sum;
+	}
+
+	double getGeometricMean() {
+		double logSum = 0;
+		for (int i = 0; i < num.length; i++) {
+			if (num[i] == 0) return 0;
+			logSum += Math.log(num[i]);
+		}
+		return Math.exp(logSum / num.length);
+	}
+
+	int getMedian() {
+		sorting();
+		int n = num.length;
+		if (n % 2 == 1) return num[n / 2];
+		return (num[n / 2 - 1] + num[n / 2]) / 2;
+	}
+
+	void sorting() {
+		for (int i = 0; i < num.length - 1; i++) {
+			int min = i;
+			for (int j = i + 1; j < num.length; j++)
+				if (num[j] < num[min]) min = j;
+			int temp = num[i];
+			num[i] = num[min];
+			num[min] = temp;
+		}
+	}
+
+	void drawHistogram(int start, int end, int binCount) {
+		int freq[] = new int[binCount];
+		double width = (double) (end - start) / binCount;
+
+		for (int i = 0; i < num.length; i++) {
+			if (num[i] < start || num[i] > end) continue;
+			int idx = (int) ((num[i] - start) / width);
+			if (idx == binCount) idx = binCount - 1;
+			freq[idx]++;
+		}
+
+		System.out.println("\n===== 도수분포표 =====");
+		System.out.println("    계급      도수  상대도수  누적도수  히스토그램");
+		int cumulative = 0;
+		for (int i = 0; i < binCount; i++) {
+			double low = start + i * width;
+			double high = low + width;
+			cumulative += freq[i];
+			System.out.printf("%5.1f ~ %5.1f %4d   %6.2f   %6d   ",
+					low, high, freq[i], (double) freq[i] / num.length, cumulative);
+			for (int k = 0; k < freq[i]; k++) System.out.print("*");
+			System.out.println();
+		}
+		System.out.printf("    합계      %4d   %6.2f%n", cumulative, (double) cumulative / num.length);
+	}
+
+	void display() {
+		System.out.printf("%3d :", num.length);
+		for (int i = 0; i < num.length; i++)
+			System.out.printf("%3d ", num[i]);
+		System.out.println();
+	}
+}
+
+
+package homeworkk;
+
+public class NumbersTest {
+	public static void main(String[] args) {
+		int size = 100;
+		int data[] = new int[size];
+		for (int i = 0; i < size; i++)
+			data[i] = (int) (Math.random() * 100);
+		Numbers obj = new Numbers(data);
+		obj.display();
+		System.out.printf("Arithmetic Mean : %5.2f\n", obj.getArithmeticMean());
+		System.out.printf("Geometric Mean  : %5.2f\n", obj.getGeometricMean());
+		System.out.printf("Harmonic Mean   : %5.2f\n", obj.getHarmonicMean());
+		System.out.printf("Median          : %5d\n", obj.getMedian());
+		obj.display();
+		obj.drawHistogram(0, 100, 10);
+	}
+}
+
+![homework](images/14.png)
